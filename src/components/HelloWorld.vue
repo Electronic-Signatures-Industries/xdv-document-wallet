@@ -1,96 +1,62 @@
+
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
+    <v-row justify="space-around">
+      <v-card width="600">
+    <v-list-item two-line>
+      <v-list-item-content>
+        <v-list-item-title class="headline">
+          0x00000
+        </v-list-item-title>
+        <v-list-item-subtitle>did:key:000000</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
 
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
+    <v-card-text>
+      <v-row align="center">
+        <v-col align="center"
+          class="display-1"
+          cols="6"
+        >
+          23000 XDV
+        </v-col>
+        <v-col  align="center"
+          class="display-1"
+          cols="6"
+        >
+          2 BNB
+        </v-col>        
+      </v-row>
+    </v-card-text>
 
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
+        <v-card-text>
+          <div class="font-weight-bold ml-8 mb-2">
+            Today
+          </div>
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
+          <v-timeline
+            align-top
+            dense
           >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
+            <v-timeline-item
+              v-for="message in messages"
+              :key="message.time"
+              :color="message.color"
+              small
+            >
+              <div>
+                <div class="font-weight-normal">
+                  <strong>{{ message.from }}</strong> @{{ message.time }}
+                </div>
+                <div>{{ message.message }}</div>
+              </div>
+            </v-timeline-item>
+          </v-timeline>
+        </v-card-text>
+      </v-card>
     </v-row>
   </v-container>
 </template>
-
 <script lang="ts">
   import Vue from 'vue'
 
@@ -98,6 +64,26 @@
     name: 'HelloWorld',
 
     data: () => ({
+            messages: [
+        {
+          from: 'You',
+          message: `Sure, I'll see you later.`,
+          time: '10:42am',
+          color: 'deep-purple lighten-1',
+        },
+        {
+          from: 'John Doe',
+          message: 'Yeah, sure. Does 1:00pm work?',
+          time: '10:37am',
+          color: 'green',
+        },
+        {
+          from: 'You',
+          message: 'Did you still want to grab lunch today?',
+          time: '9:47am',
+          color: 'deep-purple lighten-1',
+        },
+      ],
       ecosystem: [
         {
           text: 'vuetify-loader',
